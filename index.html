@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>COMPland</title>
-<meta name="description" content="La tierra de la emulación y las compilaciones: noticias, colecciones retro y dónde jugar legalmente.">
+<meta name="description" content="The land of emulation and compilations: honest emulation reviews tested on a real PC, retro news, collections and where to play legally.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-/* VOICE occasion: a gamer's guidebook, cheerful and useful, never a pirate den
+/* VOICE occasion: a player's own review notebook, cheerful and honest, never a pirate den
    IDEA the overworld map of a 16-bit game: every console is a stop on the route
    PICTURE a full-width pixel archipelago, one clickable stop per console, filtering the whole site
    COLOUR sea cobalt #1D47D8 leads, cartridge sand #FFD34E supports, pin red #FF4A3D marks, deep #0E1A4A ink, grass only on land
@@ -18,6 +18,7 @@
    LAYOUT title and search across the top, map beneath edge to edge; phone: title, map scrolls sideways, search */
 :root{color-scheme:light;--sea:#1D47D8;--sea2:#1536A8;--sand:#FFD34E;--grass:#3FCB7A;--pin:#FF4A3D;--deep:#0E1A4A;--paper:#FFFFFF;--mist:#E8EDFF}
 *{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{margin:0;background:var(--paper);color:var(--deep);font:17px/1.55 "Atkinson Hyperlegible",system-ui,sans-serif;overflow-x:clip}
 a{color:inherit}
@@ -112,6 +113,40 @@ footer .brand{color:#fff;margin-bottom:10px}
 @media(max-width:900px){.routes .cols{grid-template-columns:minmax(0,1fr)}.cal .grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:720px){.carts{grid-template-columns:repeat(2,minmax(0,1fr))}.hero .head{grid-template-columns:minmax(0,1fr)}.story.lead{grid-column:auto}.hint{display:block}nav{margin-left:0;width:100%}nav a{padding:8px 10px;font-size:15px}.close .in,footer .in{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){.carts{grid-template-columns:minmax(0,1fr)}.top{position:static}.dates li{grid-template-columns:5.6em minmax(0,1fr)}.dates .when{font-size:21px}}
+
+.lang{font:inherit;font-weight:700;font-size:15px;background:var(--sand);color:var(--deep);border:3px solid var(--deep);border-radius:8px;padding:6px 12px;min-height:44px;cursor:pointer;box-shadow:0 3px 0 var(--deep)}
+.lang:active{transform:translateY(2px);box-shadow:0 1px 0 var(--deep)}
+.tgbtn{display:inline-flex;align-items:center;gap:8px;margin-top:18px}
+.revs-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:start}
+.revs{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.rev{border:3px solid var(--deep);border-radius:14px;background:#fff;overflow:hidden;box-shadow:0 6px 0 var(--deep)}
+.rev-top{display:flex;justify-content:space-between;gap:16px;align-items:start;padding:20px 22px 16px;background:var(--mist);border-bottom:3px solid var(--deep);flex-wrap:wrap}
+.rev-top h3{font-size:clamp(22px,2.6vw,30px);margin-top:8px}
+.verdict{font-family:Bungee,sans-serif;font-size:18px;padding:8px 14px;border:3px solid var(--deep);border-radius:10px;white-space:nowrap}
+.v-perfect{background:var(--grass)}.v-great{background:#7FC4FF}.v-playable{background:var(--sand)}.v-issues{background:#FF9A3D}.v-unplayable{background:var(--pin)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:3px solid var(--deep)}
+.stats div{padding:14px 22px;border-right:3px solid var(--deep)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-family:Bungee,sans-serif;font-weight:400;font-size:clamp(17px,1.8vw,22px);line-height:1.15}
+.stats span{font-size:14px;font-weight:700}
+.rev-body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:24px;padding:20px 22px 22px}
+.rev-body h4{margin:0 0 6px;font-size:15px}
+.rev-body .set{font-size:15px;margin-top:12px;color:#3A4675}
+.spec{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:15px}
+.spec dt{font-weight:700}
+.spec dd{margin:0}
+.rev a.more{display:inline-block;margin-top:14px;font-weight:700}
+.sample{background:var(--pin);color:var(--deep);border-radius:6px;padding:1px 8px;font-size:13px;font-weight:700}
+.rig{background:var(--deep);color:#fff;border-radius:14px;padding:22px;position:sticky;top:96px}
+.rig h3{color:var(--sand);font-size:22px;margin-bottom:6px}
+.rig p{font-size:15px;color:#E8EDFF;margin-bottom:14px}
+.rig .spec dt{color:var(--sand)}
+.scale{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:6px;font-size:14px}
+.scale li{display:flex;gap:8px;align-items:center}
+.scale i{width:16px;height:16px;border-radius:4px;border:2px solid #fff;flex:none}
+@media(max-width:900px){.revs-wrap{grid-template-columns:minmax(0,1fr)}.rig{position:static}}
+@media(max-width:600px){.rev-body{grid-template-columns:minmax(0,1fr)}.stats div{padding:12px}.stats b{font-size:16px}}
+.story.lead{background:#fff}
 </style>
 </head>
 <body>
@@ -129,12 +164,12 @@ footer .brand{color:#fff;margin-bottom:10px}
 </symbol>
 <symbol id="pinS" viewBox="0 0 26 32"><path d="M13 31 4 18A11 11 0 1 1 22 18z" fill="#FF4A3D" stroke="#0E1A4A" stroke-width="2.5"/><circle cx="13" cy="11" r="4" fill="#fff"/></symbol>
 </svg>
-
 <header class="top">
 <div class="in">
-<a class="brand" href="#inicio" aria-label="COMPland, inicio"><svg><use href="#mk"/></svg><span>COMP<b>LAND</b></span></a>
-<nav aria-label="Secciones">
-<a href="#noticias">Noticias</a><a href="#compilaciones">Compilaciones</a><a href="#calendario">Calendario</a><a href="#rutas">Dónde jugar</a>
+<a class="brand" href="#inicio" aria-label="COMPland"><svg><use href="#mk"/></svg><span>COMP<b>LAND</b></span></a>
+<nav aria-label="Sections" data-i18n-aria="navAria">
+<a href="#reviews" data-i18n="navReviews">Reviews</a><a href="#news" data-i18n="navNews">News</a><a href="#collections" data-i18n="navColl">Collections</a><a href="#calendar" data-i18n="navCal">Calendar</a><a href="#where" data-i18n="navWhere">Where to play</a>
+<button class="lang" id="lang" type="button">ES</button>
 </nav>
 </div>
 </header>
@@ -144,70 +179,89 @@ footer .brand{color:#fff;margin-bottom:10px}
 <div class="in">
 <div class="head">
 <div>
-<h1>La tierra de la emulación y las compilaciones</h1>
-<p class="lede">Lo más importante de los títulos retro del momento, en un solo mapa. Elige una consola y te llevamos a las noticias, a las colecciones y al lugar oficial donde ya se pueden jugar.</p>
+<h1 data-i18n="h1">The land of emulation and compilations</h1>
+<p class="lede" data-i18n="lede">Honest reviews of how retro games really run on emulators, tested on a real PC, plus the news and collections that matter. Pick a console on the map.</p>
+<a class="btn tgbtn" id="tg" href="#" hidden data-i18n="tg">Join the Telegram channel</a>
 </div>
 <div class="find">
-<label for="q">Buscar en COMPland</label>
-<input id="q" type="search" placeholder="Zelda, PS2, Digital Eclipse…" autocomplete="off">
+<label for="q" data-i18n="search">Search COMPland</label>
+<input id="q" type="search" placeholder="Zelda, PS2, Dolphin…" autocomplete="off">
 <div class="chips" id="chips"></div>
 </div>
 </div>
 </div>
-<div class="mapwrap" id="mapwrap">
+<div class="mapwrap">
 <div class="map" id="map"><svg id="world" viewBox="0 0 1200 460" preserveAspectRatio="none" aria-hidden="true"></svg></div>
 </div>
-<p class="hint">Desliza el mapa para ver todas las consolas.</p>
+<p class="hint" data-i18n="hint">Swipe the map to see every console.</p>
 </section>
 
-<section class="band" id="noticias">
+<section class="band" id="reviews">
 <div class="in">
 <div class="sec-head">
-<div><h2>Noticias de emulación</h2><p class="state" id="state" aria-live="polite"></p></div>
-<button class="clear" id="clear" type="button" hidden>Ver todo el mapa</button>
+<div><h2 data-i18n="revH">Emulation reviews</h2><p class="state" id="state" aria-live="polite"></p></div>
+<button class="clear" id="clear" type="button" hidden data-i18n="clear">Show the whole map</button>
 </div>
-<div class="news" id="news"></div>
-<p class="empty" id="empty">No hay noticias para esa búsqueda. Prueba con otra consola o borra el texto del buscador.</p>
+<div class="revs-wrap">
+<div>
+<div class="revs" id="revs"></div>
+<p class="empty" id="revEmpty" data-i18n="revEmpty">No reviews for this console yet. Pick another one on the map.</p>
+</div>
+<aside class="rig" aria-labelledby="rig-t">
+<h3 id="rig-t" data-i18n="rigH">My test PC</h3>
+<p data-i18n="rigP">Every review is played on this machine, so you can compare it with yours.</p>
+<dl class="spec" id="rig"></dl>
+<ul class="scale" id="scale"></ul>
+</aside>
+</div>
 </div>
 </section>
 
-<section class="band comps" id="compilaciones">
+<section class="band" id="news" style="background:var(--mist)">
 <div class="in">
-<div class="sec-head"><h2>Compilaciones del momento</h2><p>Colecciones oficiales que reúnen clásicos con extras modernos: rebobinar, guardar en cualquier punto y más.</p></div>
+<div class="sec-head"><h2 data-i18n="newsH">Emulation news</h2></div>
+<div class="news" id="newsList"></div>
+<p class="empty" id="empty" data-i18n="newsEmpty">No news for that search. Try another console or clear the search box.</p>
+</div>
+</section>
+
+<section class="band comps" id="collections">
+<div class="in">
+<div class="sec-head"><h2 data-i18n="collH">Collections right now</h2><p data-i18n="collP">Official collections that bring classics back with modern extras: rewind, save anywhere and more.</p></div>
 <div class="carts" id="carts"></div>
 </div>
 </section>
 
-<section class="band cal" id="calendario">
+<section class="band cal" id="calendar">
 <div class="in grid">
 <div>
-<h2>Calendario retro</h2>
+<h2 data-i18n="calH">Retro calendar</h2>
 <ul class="dates" id="dates" style="margin-top:20px"></ul>
 </div>
 <aside class="safe" aria-labelledby="safe-t">
-<h3 id="safe-t">Antes de descargar un emulador</h3>
-<p>Investigadores encontraron falsos emuladores de PS5 en GitHub que en realidad roban contraseñas. Tres reglas para no caer:</p>
+<h3 id="safe-t" data-i18n="safeH">Before you download an emulator</h3>
+<p data-i18n="safeP">Researchers found fake PS5 emulators on GitHub that actually steal passwords. Three rules to stay safe:</p>
 <ul>
-<li>Descarga solo desde el sitio oficial del proyecto. En COMPland enlazamos únicamente esos sitios.</li>
-<li>Desconfía de "emuladores" de consolas actuales que prometen jugar todo sin problemas.</li>
-<li>Nunca pongas tu contraseña ni datos de pago para "activar" un emulador.</li>
+<li data-i18n="safe1">Only download from the project's official site. COMPland only links to those.</li>
+<li data-i18n="safe2">Be wary of "emulators" for current consoles that promise to run everything perfectly.</li>
+<li data-i18n="safe3">Never enter a password or payment details to "activate" an emulator.</li>
 </ul>
-<a href="https://www.tomshardware.com/tag/emulation" style="color:var(--sand);font-weight:700">Leer la noticia en Tom's Hardware</a>
+<a href="https://www.tomshardware.com/tag/emulation" style="color:var(--sand);font-weight:700" data-i18n="safeL">Read the story on Tom's Hardware</a>
 </aside>
 </div>
 </section>
 
-<section class="band routes" id="rutas">
+<section class="band routes" id="where">
 <div class="in">
-<div class="sec-head"><h2>Dónde jugar</h2><p>COMPland no guarda archivos: te dirige al lugar oficial donde ya están. Estas son las rutas seguras.</p></div>
+<div class="sec-head"><h2 data-i18n="whereH">Where to play</h2><p data-i18n="whereP">COMPland doesn't host files: it points you to the official place where they already are. These are the safe routes.</p></div>
 <div class="cols" id="routes"></div>
 </div>
 </section>
 
 <section class="band close">
 <div class="in">
-<div><h2>Toda la emulación, un solo mapa</h2><p class="lede">Vuelve cada semana: actualizamos noticias, lanzamientos y rutas de cada consola.</p></div>
-<a class="btn" href="#inicio">Volver al mapa</a>
+<div><h2 data-i18n="closeH">All of emulation, one map</h2><p class="lede" data-i18n="closeP">New reviews every week, tested on a real PC, plus the latest news and releases for every console.</p></div>
+<a class="btn" href="#inicio" data-i18n="closeB">Back to the map</a>
 </div>
 </section>
 </main>
@@ -216,105 +270,15 @@ footer .brand{color:#fff;margin-bottom:10px}
 <div class="in">
 <div>
 <a class="brand" href="#inicio"><svg><use href="#mk"/></svg><span>COMP<b>LAND</b></span></a>
-<p>La tierra de la emulación y las compilaciones. © 2026 COMPland.</p>
+<p data-i18n="footA">The land of emulation and compilations. © 2026 COMPland.</p>
 </div>
 <div>
-<p><b>Sobre los archivos:</b> COMPland no aloja ni enlaza ROMs, BIOS ni firmware con derechos de autor. Te llevamos a tiendas y servicios oficiales, a emuladores desde su sitio oficial, a homebrew gratuito y a guías para copiar tus propios juegos. Las marcas y nombres de juegos pertenecen a sus dueños.</p>
-<p style="margin-top:10px">Noticias recopiladas a noviembre de 2026, cada una con enlace a su fuente.</p>
+<p data-i18n-html="footB"><b>About files:</b> COMPland doesn't host or link to copyrighted ROMs, BIOS or firmware. We point you to official stores and services, emulators from their official site, free homebrew and guides to back up your own games. Trademarks and game names belong to their owners.</p>
+<p style="margin-top:10px" data-i18n="footC">News collected as of November 2026, each with a link to its source. Reviews are personal opinions based on the test PC shown.</p>
 </div>
 </div>
 </footer>
-
-<script>
-{
-const STOPS=[
- {id:'Arcade',x:130,y:300,isle:0},{id:'NES',x:290,y:170,isle:0},{id:'SNES',x:460,y:310,isle:0},
- {id:'PS1',x:640,y:160,isle:1},{id:'PS2',x:790,y:300,isle:1},
- {id:'GameCube',x:960,y:165,isle:2},{id:'3DS',x:1080,y:320,isle:2}];
-const NEWS=[
- {t:'Manic EMU 2.0.2 acelera la emulación de 3DS en iPhone y iPad',d:'2 nov 2026',tags:['3DS'],s:'La actualización mejora el rendimiento de 3DS, sobre todo al navegar el menú Home con el núcleo Azahar, y suma soporte de ventanas en iPad.',src:'Notebookcheck',u:'https://notebookcheck.net/Manic-EMU-update-improves-Nintendo-3DS-emulation-and-adds-iPad-window-support.1441026.0.html',lead:1},
- {t:'Star Fox Adventures llega a GameCube en Switch 2',d:'10 sep 2026',tags:['GameCube'],s:'Se suma a la colección GameCube – Nintendo Classics, que requiere Nintendo Switch Online + Paquete de expansión. Pokémon Colosseum está anunciado como el siguiente.',src:'GameWith',u:'https://gamewith.jp/switch2/article/show/4036'},
- {t:'Super Mario Sunshine se une a la colección de GameCube',d:'13 ago 2026',tags:['GameCube'],s:'Nintendo lo agregó a GameCube – Nintendo Classics en Switch 2 para miembros del Paquete de expansión.',src:'Super Mario Wiki',u:'https://www.mariowiki.com/Nintendo_GameCube_–_Nintendo_Classics'},
- {t:'Falsos emuladores de PS5 roban contraseñas',d:'2026',tags:['Seguridad'],warn:1,s:'Malware disfrazado de dos emuladores populares de PS5 circuló por GitHub. Descarga emuladores solo desde su sitio oficial.',src:"Tom's Hardware",u:'https://www.tomshardware.com/tag/emulation'},
- {t:'ARMSX2 llega a su versión 1.0',d:'2026',tags:['PS2'],s:'La emulación de PS2 en Android da un salto con la primera versión estable de ARMSX2.',src:'Time Extension',u:'https://www.timeextension.com/tags/emulation?page=2'},
- {t:'Azahar sigue mejorando la emulación de 3DS',d:'2026',tags:['3DS'],s:'El emulador de 3DS avanza a buen ritmo y ya es la base de apps como Manic EMU.',src:'Time Extension',u:'https://www.timeextension.com/tags/emulation?page=2'},
- {t:'Atari compra el estudio de emulación Implicit Conversions',d:'2026',tags:['Industria'],s:'Atari suma otro estudio especializado en llevar clásicos a consolas actuales.',src:'GamesIndustry.biz vía GameDev.net',u:'https://gamedev.net/news/topic/emulation/'},
- {t:'Lakka 6.1 trae RetroArch 1.22.2',d:'23 feb 2026',tags:['Arcade','Multisistema'],s:'La distribución para convertir una PC o Raspberry Pi en consola retro se actualiza, con imágenes optimizadas para pantallas CRT.',src:'AlternativeTo',u:'https://alternativeto.net/news/tag/game-emulation'}
-];
-const COMPS=[
- {t:'Toy Story: Retro Roundup!',d:'15 oct 2026',by:'Digital Eclipse / Atari',p:'US$29.99',on:'PS5, PS4, Xbox, Switch, Switch 2, PC',tags:['SNES','PS1'],s:'Cinco juegos de Toy Story y A Bug’s Life en versiones de Genesis, SNES, Game Boy y PS1, con rebobinar y modo práctica.',u:'https://www.gematsu.com/games/toy-story-retro-roundup',c:'#3FCB7A'},
- {t:'Joe & Mac Retro Collection',d:'29 oct 2026',by:'Red Art Games',p:'US$19.99',on:'Switch, Switch 2, PS5, Xbox, Steam',tags:['SNES'],s:'Tres clásicos de SNES y un modo Boss Rush nuevo. Edición física a inicios de 2027.',u:'https://www.gematsu.com/2026/08/joe-mac-retro-collection-launches-october-29',c:'#FF4A3D'},
- {t:'Barbie Rewind',d:'12 nov 2026',by:'Atari',p:'',on:'PS5, Switch, Switch 2',tags:['Multisistema'],s:'Dieciséis juegos de los 90 y principios de los 2000, más un juego nuevo de diseño de la Dreamhouse.',u:'https://www.vice.com/en/article/bundle-of-16-retro-games-from-the-90s-and-early-2000s-is-coming-to-nintendo-switch-and-ps5/',c:'#FF8FC8'},
- {t:'SUNSOFT is Back! Retro Game Selection 2',d:'17 dic 2026',by:'SUNSOFT',p:'',on:'Switch, PS5',tags:['NES'],s:'Segunda entrega de la serie retro de Sunsoft, con su primer juego de consola de 1985.',u:'https://www.dekudeals.com/items/sunsoft-is-back-retro-game-selection-2',c:'#FFD34E'},
- {t:'GameCube – Nintendo Classics',d:'Servicio',by:'Nintendo',p:'Con Paquete de expansión',on:'Solo Switch 2',tags:['GameCube'],s:'Wind Waker, F-Zero GX, SoulCalibur II, Mario Sunshine, Star Fox Adventures y más, con nuevos títulos cada pocos meses.',u:'https://www.nintendo.com/us/store/products/nintendo-gamecube-nintendo-classics-switch-2/',c:'#8C7CFF'}
-];
-const DATES=[
- ['15 oct','Toy Story: Retro Roundup!','Digital Eclipse / Atari'],
- ['29 oct','Joe & Mac Retro Collection','Red Art Games'],
- ['12 nov','Barbie Rewind','Atari'],
- ['17 dic','SUNSOFT is Back! Retro Game Selection 2','SUNSOFT'],
- ['Pronto','Pokémon Colosseum','GameCube – Nintendo Classics, Switch 2']
-];
-const ROUTES=[
- ['Emuladores oficiales','Descárgalos solo desde estos sitios. Son gratis y legales.',[
-  ['RetroArch','https://www.retroarch.com','Un solo programa para decenas de consolas'],
-  ['Dolphin','https://dolphin-emu.org','GameCube y Wii'],
-  ['PCSX2','https://pcsx2.net','PlayStation 2 en PC'],
-  ['DuckStation','https://www.duckstation.org','PlayStation 1'],
-  ['Azahar','https://azahar-emu.org','Nintendo 3DS'],
-  ['MAME','https://www.mamedev.org','Máquinas arcade']]],
- ['Clásicos legales','Servicios y tiendas donde los juegos ya están, con licencia.',[
-  ['Nintendo Switch Online','https://www.nintendo.com/us/switch/online/','NES, SNES, N64, GBA y GameCube en Switch 2'],
-  ['Antstream Arcade','https://www.antstream.com','Más de mil clásicos por suscripción'],
-  ['GOG','https://www.gog.com','Juegos de PC clásicos sin DRM'],
-  ['Evercade','https://evercade.co.uk','Cartuchos con colecciones oficiales']]],
- ['Tus propios juegos','La forma legal de usar ROMs: copiar los cartuchos y discos que ya tienes.',[
-  ['Guía de Dolphin','https://dolphin-emu.org/docs/guides/','Cómo copiar tus discos de GameCube y Wii'],
-  ['Homebrew en itch.io','https://itch.io/games/tag-homebrew','Juegos nuevos para consolas viejas, gratis y legales'],
-  ['Documentación de RetroArch','https://docs.libretro.com','Configuración, núcleos y BIOS que debes obtener de tu consola']]]
-];
-const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let pick='',q='';
-const $=id=>document.getElementById(id);
-
-// map
-let seed=7;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
-const U=20,cells=new Map(),grass=new Set();
-STOPS.forEach(s=>{const cx=s.x/U,cy=s.y/U;for(let x=-7;x<=7;x++)for(let y=-6;y<=6;y++){const r=Math.hypot(x/1.25,y);const k=`${Math.round(cx+x)},${Math.round(cy+y)}`;if(r<3.9+rnd()*1.3)cells.set(k,1);if(r<2.2+rnd()*1.3&&!(x===0&&y>=-1&&y<=1))grass.add(k)}});
-// bridge gaps inside each island
-[[0,1],[1,2],[3,4],[5,6]].forEach(([a,b])=>{const A=STOPS[a],B=STOPS[b];for(let t=0;t<=1;t+=.04){const x=Math.round((A.x+(B.x-A.x)*t)/U),y=Math.round((A.y+(B.y-A.y)*t)/U);for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)cells.set(`${x+dx},${y+dy}`,1)}});
-let waves='';for(let i=0;i<46;i++){const x=rnd()*1180,y=rnd()*440;if(!cells.has(`${Math.round(x/U)},${Math.round(y/U)}`))waves+=`<path d="M${x.toFixed(0)} ${y.toFixed(0)}q6-6 12 0t12 0" fill="none" stroke="#5C7CF0" stroke-width="3" stroke-linecap="round"/>`}
-let shade='',land='',green='';
-cells.forEach((_,k)=>{const[x,y]=k.split(',').map(Number);shade+=`<rect x="${x*U}" y="${y*U+10}" width="${U}" height="${U}"/>`;land+=`<rect x="${x*U}" y="${y*U}" width="${U+1}" height="${U+1}"/>`});
-grass.forEach(k=>{if(!cells.has(k))return;const[x,y]=k.split(',').map(Number);green+=`<rect x="${x*U}" y="${y*U}" width="${U+1}" height="${U+1}"/>`});
-const route=STOPS.map((s,i)=>(i?'L':'M')+s.x+' '+(s.y+6)).join('');
-$('world').setAttribute('shape-rendering','crispEdges');$('world').innerHTML=`<rect width="1200" height="460" fill="#1D47D8"/>${waves}<g fill="#1536A8">${shade}</g><g fill="#FFD34E">${land}</g><g fill="#3FCB7A">${green}</g><path d="${route}" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray=".1 14" shape-rendering="auto"/>`;
-
-const count=id=>NEWS.filter(n=>n.tags.includes(id)).length+COMPS.filter(c=>c.tags.includes(id)).length;
-$('map').insertAdjacentHTML('beforeend',STOPS.map(s=>`<button class="stop" type="button" data-id="${s.id}" aria-pressed="false" style="left:${s.x/12}%;top:${(s.y+6)/4.6}%"><span class="tag">${s.id}<span class="n" title="${count(s.id)} temas">${count(s.id)}</span></span><svg class="pin" width="26" height="32" viewBox="0 0 26 32"><use href="#pinS"/></svg></button>`).join(''));
-const CHIPS=['Seguridad','Industria','Multisistema'];
-$('chips').innerHTML=CHIPS.map(c=>`<button class="chip" type="button" data-id="${c}" aria-pressed="false">${c}</button>`).join('');
-
-const match=it=>(!pick||it.tags.includes(pick))&&(!q||(it.t+' '+it.s+' '+it.tags.join(' ')+' '+(it.by||'')).toLowerCase().includes(q));
-function render(){
- const ns=NEWS.filter(match);
- $('news').innerHTML=ns.map(n=>`<article class="story${n.lead&&!pick&&!q?' lead':''}"><div class="meta"><time>${esc(n.d)}</time>${n.tags.map(t=>`<span class="tg${n.warn?' warn':''}">${esc(t)}</span>`).join('')}</div><h3>${esc(n.t)}</h3><p>${esc(n.s)}</p><a class="src" href="${esc(n.u)}">Fuente: ${esc(n.src)}</a></article>`).join('');
- $('empty').style.display=ns.length?'none':'block';
- const cs=COMPS.filter(c=>!pick||c.tags.includes(pick)||c.tags.includes('Multisistema'));
- $('carts').innerHTML=cs.map((c,i)=>`<article class="cart"><div class="grip"></div><div class="art">${art(c,i)}</div><h3>${esc(c.t)}</h3><dl><dt>Sale</dt><dd>${esc(c.d)}</dd><dt>De</dt><dd>${esc(c.by)}</dd><dt>En</dt><dd>${esc(c.on)}</dd>${c.p?`<dt>Precio</dt><dd>${esc(c.p)}</dd>`:''}</dl><p>${esc(c.s)}</p><a href="${esc(c.u)}">Ver ficha</a></article>`).join('');
- const label=pick?`Mostrando: ${pick}`:'';
- $('state').textContent=[label,q?`Búsqueda: “${q}”`:'',`${ns.length} noticias`].filter(Boolean).join('. ');
- $('clear').hidden=!pick&&!q;
- document.querySelectorAll('.stop,.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===pick));
-}
-function art(c,i){let s=(i+3)*99991,r=()=>(s=s*16807%2147483647)/2147483647,o='';for(let y=0;y<6;y++)for(let x=0;x<8;x++){const v=r();if(v<.45)o+=`<rect x="${x*10}" y="${y*10}" width="10" height="10" fill="${v<.2?'#0E1A4A':c.c}" opacity="${v<.2?.35:1}"/>`}return `<svg viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice"><rect width="80" height="60" fill="#1D47D8"/>${o}</svg>`}
-document.body.addEventListener('click',e=>{const b=e.target.closest('.stop,.chip');if(!b)return;pick=pick===b.dataset.id?'':b.dataset.id;render();if(b.classList.contains('stop')&&pick)$('noticias').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})});
-$('q').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();render()});
-$('clear').addEventListener('click',()=>{pick='';q='';$('q').value='';render()});
-$('dates').innerHTML=DATES.map(d=>`<li><span class="when${d[0].length>6?' soon':''}">${esc(d[0])}</span><div><b>${esc(d[1])}</b><span>${esc(d[2])}</span></div></li>`).join('');
-$('routes').innerHTML=ROUTES.map(r=>`<div><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p><ul>${r[2].map(l=>`<li><a href="${esc(l[1])}">${esc(l[0])}</a><span>${esc(l[2])}</span></li>`).join('')}</ul></div>`).join('');
-render();
-}
-</script>
+<script src="content.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
