@@ -6,6 +6,13 @@
 <title>COMPland</title>
 <meta name="description" content="The land of emulation and compilations: honest emulation reviews tested on a real PC, retro news, collections and where to play legally.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1D47D8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="COMPland">
+<meta property="og:description" content="Emulation reviews tested on a real PC, retro news, collections and where to play legally.">
+<meta property="og:url" content="https://compland.vercel.app/">
+<meta property="og:image" content="https://compland.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -46,16 +53,33 @@ nav a:hover{background:var(--sea2)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .chip{font:inherit;font-weight:700;font-size:15px;border:2px solid #fff;background:transparent;color:#fff;border-radius:99px;padding:8px 14px;min-height:44px;cursor:pointer}
 .chip[aria-pressed=true]{background:var(--sand);border-color:var(--sand);color:var(--deep)}
-.mapwrap{margin-top:28px;overflow-x:auto;margin-inline:calc(-1*max(5vw,16px))}
-.map{position:relative;aspect-ratio:1200/460;min-width:760px}
+.mapwrap{margin-top:28px;margin-inline:calc(-1*max(5vw,16px))}
+.map{position:relative;aspect-ratio:1200/440}
 .map>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.stop{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:var(--deep);min-width:44px;min-height:44px}
-.stop .pin{width:26px;height:32px;display:block;flex:none}
-.stop .tag{display:flex;align-items:center;gap:8px;background:#fff;border:3px solid var(--deep);border-radius:8px;padding:3px 4px 3px 10px;font-family:Bungee,sans-serif;font-size:14px;white-space:nowrap;box-shadow:0 4px 0 var(--deep);margin-bottom:4px}
-.stop .n{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:700;font-size:13px;background:var(--deep);color:#fff;border-radius:5px;padding:0 7px;line-height:20px}
+.isle{position:absolute;transform:translate(-50%,-100%);z-index:2}
+.isle:hover,.isle.open,.isle:focus-within{z-index:6}
+.stop{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:var(--deep);min-width:44px;min-height:44px}
+.stop .pin{width:26px;height:32px;display:block;flex:none;transition:transform .2s}
+.stop .tag{display:flex;align-items:center;gap:8px;background:#fff;border:3px solid var(--deep);border-radius:8px;padding:4px 5px 4px 12px;font-family:Bungee,sans-serif;font-size:clamp(13px,1.4vw,17px);white-space:nowrap;box-shadow:0 4px 0 var(--deep);margin-bottom:4px}
+.n{font-family:"Atkinson Hyperlegible",sans-serif;font-weight:700;font-size:13px;background:var(--deep);color:#fff;border-radius:5px;padding:0 7px;line-height:20px}
 .stop:hover .tag,.stop[aria-pressed=true] .tag{background:var(--sand)}
 .stop[aria-pressed=true] .pin path{fill:var(--sand)}
-.hint{font-size:14px;padding:8px max(5vw,16px) 14px;color:#E8EDFF;display:none}
+.pop{position:absolute;left:50%;top:100%;transform:translateX(-50%);display:none;background:#fff;border:3px solid var(--deep);border-radius:12px;box-shadow:0 5px 0 var(--deep);padding:10px 12px 12px;width:max-content;max-width:min(300px,86vw)}
+.isle.left .pop{left:-30px;transform:none}
+.isle.right .pop{left:auto;right:-30px;transform:none}
+.pop::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.pop p{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--deep)}
+.pop .list{display:flex;flex-wrap:wrap;gap:6px}
+.con{font:inherit;font-weight:700;font-size:14px;border:2px solid var(--deep);background:var(--mist);color:var(--deep);border-radius:8px;padding:4px 9px;min-height:40px;cursor:pointer;display:flex;gap:6px;align-items:center}
+.con:hover,.con[aria-pressed=true]{background:var(--sand)}
+.con.zero{background:#fff;color:#4A557F;border-color:#9AA3C7}
+.isle.open .pop{display:block}
+@media(hover:hover){.isle:hover .pop{display:block}.stop:hover .pin{transform:translateY(-4px)}}
+.hint{font-size:14px;padding:8px max(5vw,16px) 14px;color:#E8EDFF}
+.foam{opacity:.55}
+@media(prefers-reduced-motion:no-preference){.wv{animation:drift 3.2s ease-in-out infinite alternate}@keyframes drift{from{transform:translateX(-7px)}to{transform:translateX(7px)}}.stop[aria-pressed=true] .pin{animation:hop .5s ease-out}@keyframes hop{40%{transform:translateY(-10px)}}}
+@media(pointer:fine){html{cursor:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='30'%20viewBox='0%200%2013%2015'%20shape-rendering='crispEdges'%3E%3Cpath%20d='M1%201h2v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1h1v1H8v1h1v1h1v2H8v-1H7v-1H6v-1H5v1H4v1H3v1H1z'%20fill='%230E1A4A'/%3E%3Cpath%20d='M2%203h1v1h1v1h1v1h1v1h1v1h1v1h1v1H7v1h1v1h1v1H8v-1H7v-1H6v-1H5v-1H4v1H3v1H2z'%20fill='%23FFD34E'/%3E%3C/svg%3E") 2 2,auto}a,button,.stop,.con,.chip,summary{cursor:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='32'%20viewBox='0%200%2026%2032'%3E%3Cpath%20d='M13%2031%204%2018A11%2011%200%201%201%2022%2018z'%20fill='%23FF4A3D'%20stroke='%230E1A4A'%20stroke-width='2.5'/%3E%3Ccircle%20cx='13'%20cy='11'%20r='4'%20fill='%23fff'/%3E%3C/svg%3E") 13 31,pointer}input{cursor:text}}
+@media(max-width:700px){.map{aspect-ratio:600/880}}
 .sec-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
 .sec-head p{max-width:34em}
 .state{font-weight:700;color:var(--sea)}
@@ -108,10 +132,9 @@ nav a:hover{background:var(--sea2)}
 footer{background:var(--deep);color:#E8EDFF;font-size:15px}
 footer .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:30px}
 footer .brand{color:#fff;margin-bottom:10px}
-@media(prefers-reduced-motion:no-preference){.stop[aria-pressed=true] .pin{animation:hop .5s ease-out}@keyframes hop{40%{transform:translateY(-10px)}}}
 @media(max-width:1100px){.carts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){.routes .cols{grid-template-columns:minmax(0,1fr)}.cal .grid{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:720px){.carts{grid-template-columns:repeat(2,minmax(0,1fr))}.hero .head{grid-template-columns:minmax(0,1fr)}.story.lead{grid-column:auto}.hint{display:block}nav{margin-left:0;width:100%}nav a{padding:8px 10px;font-size:15px}.close .in,footer .in{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:720px){.carts{grid-template-columns:repeat(2,minmax(0,1fr))}.hero .head{grid-template-columns:minmax(0,1fr)}.story.lead{grid-column:auto}nav{margin-left:0;width:100%}nav a{padding:8px 10px;font-size:15px}.close .in,footer .in{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){.carts{grid-template-columns:minmax(0,1fr)}.top{position:static}.dates li{grid-template-columns:5.6em minmax(0,1fr)}.dates .when{font-size:21px}}
 
 .lang{font:inherit;font-weight:700;font-size:15px;background:var(--sand);color:var(--deep);border:3px solid var(--deep);border-radius:8px;padding:6px 12px;min-height:44px;cursor:pointer;box-shadow:0 3px 0 var(--deep)}
@@ -169,6 +192,7 @@ footer .brand{color:#fff;margin-bottom:10px}
 <a class="brand" href="#inicio" aria-label="COMPland"><svg><use href="#mk"/></svg><span>COMP<b>LAND</b></span></a>
 <nav aria-label="Sections" data-i18n-aria="navAria">
 <a href="#reviews" data-i18n="navReviews">Reviews</a><a href="#news" data-i18n="navNews">News</a><a href="#collections" data-i18n="navColl">Collections</a><a href="#calendar" data-i18n="navCal">Calendar</a><a href="#where" data-i18n="navWhere">Where to play</a>
+<a href="#" data-tg hidden data-i18n="tgShort">Telegram</a>
 <button class="lang" id="lang" type="button">ES</button>
 </nav>
 </div>
@@ -181,7 +205,7 @@ footer .brand{color:#fff;margin-bottom:10px}
 <div>
 <h1 data-i18n="h1">The land of emulation and compilations</h1>
 <p class="lede" data-i18n="lede">Honest reviews of how retro games really run on emulators, tested on a real PC, plus the news and collections that matter. Pick a console on the map.</p>
-<a class="btn tgbtn" id="tg" href="#" hidden data-i18n="tg">Join the Telegram channel</a>
+<a class="btn tgbtn" data-tg href="#" hidden data-i18n="tg">Join the Telegram channel</a>
 </div>
 <div class="find">
 <label for="q" data-i18n="search">Search COMPland</label>
@@ -193,7 +217,7 @@ footer .brand{color:#fff;margin-bottom:10px}
 <div class="mapwrap">
 <div class="map" id="map"><svg id="world" viewBox="0 0 1200 460" preserveAspectRatio="none" aria-hidden="true"></svg></div>
 </div>
-<p class="hint" data-i18n="hint">Swipe the map to see every console.</p>
+<p class="hint" data-i18n="hint">Tap or hover an island to see its consoles.</p>
 </section>
 
 <section class="band" id="reviews">
@@ -212,6 +236,7 @@ footer .brand{color:#fff;margin-bottom:10px}
 <p data-i18n="rigP">Every review is played on this machine, so you can compare it with yours.</p>
 <dl class="spec" id="rig"></dl>
 <ul class="scale" id="scale"></ul>
+<a class="btn" data-tg href="#" hidden style="margin-top:20px" data-i18n="tgFollow">Follow the reviews on Telegram</a>
 </aside>
 </div>
 </div>
@@ -261,7 +286,7 @@ footer .brand{color:#fff;margin-bottom:10px}
 <section class="band close">
 <div class="in">
 <div><h2 data-i18n="closeH">All of emulation, one map</h2><p class="lede" data-i18n="closeP">New reviews every week, tested on a real PC, plus the latest news and releases for every console.</p></div>
-<a class="btn" href="#inicio" data-i18n="closeB">Back to the map</a>
+<div style="display:flex;gap:14px;flex-wrap:wrap"><a class="btn" data-tg href="#" hidden data-i18n="tg">Join the Telegram channel</a><a class="btn" href="#inicio" style="background:#fff" data-i18n="closeB">Back to the map</a></div>
 </div>
 </section>
 </main>

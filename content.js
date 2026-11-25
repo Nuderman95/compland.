@@ -9,7 +9,7 @@
 window.COMPLAND = {
 
   /* Enlace a tu canal de Telegram. Mientras esté vacío, el botón no aparece. */
-  telegram: "",
+  telegram: "https://t.me/Iglesiadelgaming120MS",
 
   /* Tu PC de pruebas: aparece junto a los análisis. */
   rig: {
